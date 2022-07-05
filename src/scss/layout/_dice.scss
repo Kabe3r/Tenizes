@@ -1,0 +1,93 @@
+@use '../util' as u;
+
+.dice {
+      background-color: var(--background-color);
+      // color: var(--color);
+      height: u.rem(700); // noted
+      // width: auto;
+      border-radius: u.rem(16);
+      padding: u.rem(20);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+
+      @include u.breakpointup(small) {
+            padding: u.rem(60);
+      }
+      
+      &__desc {
+            font-family: u.$font-para;
+            text-align: center;
+
+            @include u.breakpointup(medium) {
+                  font-size: u.rem(20);
+            }             
+      }
+      
+      &__score {
+            border: u.rem(2) solid #0b2434;
+            border-radius: u.rem(24);
+            color: #0b2434;
+            padding: u.rem(12) u.rem(24);
+      }
+
+      &__container {
+            display: grid;
+            grid-template: auto auto / repeat(5, 1fr);
+            gap: u.rem(20);
+            margin-bottom: u.rem(30);
+      }
+
+      &__face {
+            height: u.rem(50);
+            width: u.rem(50);
+            box-shadow: u.rem(0) u.rem(2) u.rem(2) rgba(0, 0, 0, 0.15);
+            border-radius: u.rem(10);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            
+            @include u.breakpointup(medium) {
+                  height: u.rem(75);
+                  width: u.rem(75);
+            }
+      }
+
+      &__face > span {
+            align-self: center;
+            justify-self: center;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%
+      }
+
+      &__face > span:nth-child(2) {
+            grid-row: span 3;
+      }
+
+      &__roll {
+            height: u.rem(50);
+            padding: u.rem(10);
+            width: u.rem(150);
+            border: none;
+            border-radius: u.rem(6);
+            background-color: var(--btn-color);
+            color: white;
+            font-family: u.$font-body;
+            font-size: u.rem(20);
+            cursor: pointer; 
+      }
+
+      &__roll:focus {
+           outline: none;
+      }
+
+      &__roll:active {
+            box-shadow: inset u.rem(5) u.rem(5) u.rem(10) u.rem(-3) rgba(0, 0, 0, 0.7); 
+      }
+
+}
